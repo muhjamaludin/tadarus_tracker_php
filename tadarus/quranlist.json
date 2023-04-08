@@ -1,0 +1,572 @@
+[
+  {
+    "surah": "Al-Fatihah",
+    "number": 1,
+    "ayat": "7"
+  },
+  {
+    "surah": "Al-Baqarah",
+    "number": 2,
+    "ayat": "286"
+  },
+  {
+    "surah": "Ali 'Imran",
+    "number": 3,
+    "ayat": "200"
+  },
+  {
+    "surah": "An-Nisa",
+    "number": 4,
+    "ayat": "176"
+  },
+  {
+    "surah": "Al-Ma'idah",
+    "number": 5,
+    "ayat": "120"
+  },
+  {
+    "surah": "Al-An'am",
+    "number": 6,
+    "ayat": "165"
+  },
+  {
+    "surah": "Al-A'raaf",
+    "number": 7,
+    "ayat": "206"
+  },
+  {
+    "surah": "Al-Anfaal",
+    "number": 8,
+    "ayat": "75"
+  },
+  {
+    "surah": "At Taubah",
+    "number": 9,
+    "ayat": "129"
+  },
+  {
+    "surah": "Yunus",
+    "number": 10,
+    "ayat": "109"
+  },
+  {
+    "surah": "Hud",
+    "number": 11,
+    "ayat": "123"
+  },
+  {
+    "surah": "Yusuf",
+    "number": 12,
+    "ayat": "111"
+  },
+  {
+    "surah": "Ar-Ra'd",
+    "number": 13,
+    "ayat": "43"
+  },
+  {
+    "surah": "Ibrahim",
+    "number": 14,
+    "ayat": "52"
+  },
+  {
+    "surah": "Al-Hijr",
+    "number": 15,
+    "ayat": "99"
+  },
+  {
+    "surah": "An-Nahl",
+    "number": 16,
+    "ayat": "128"
+  },
+  {
+    "surah": "Al-Israa",
+    "number": 17,
+    "ayat": "111"
+  },
+  {
+    "surah": "Al-Kahfi",
+    "number": 18,
+    "ayat": "110"
+  },
+  {
+    "surah": "Maryam",
+    "number": 19,
+    "ayat": "98"
+  },
+  {
+    "surah": "Taa-Haa",
+    "number": 20,
+    "ayat": "135"
+  },
+  {
+    "surah": "Al-Anbiyaa",
+    "number": 21,
+    "ayat": "112"
+  },
+  {
+    "surah": "Al-Hajj",
+    "number": 22,
+    "ayat": "78"
+  },
+  {
+    "surah": "Al-Mukminun",
+    "number": 23,
+    "ayat": "118"
+  },
+  {
+    "surah": "An-Nur",
+    "number": 24,
+    "ayat": "64"
+  },
+  {
+    "surah": "Al-Furqaan",
+    "number": 25,
+    "ayat": "77"
+  },
+  {
+    "surah": "Ash-Shu'araa",
+    "number": 26,
+    "ayat": "227"
+  },
+  {
+    "surah": "An-Naml",
+    "number": 27,
+    "ayat": "93"
+  },
+  {
+    "surah": "Al-Qasas",
+    "number": 28,
+    "ayat": "88"
+  },
+  {
+    "surah": "Al-Ankabut",
+    "number": 29,
+    "ayat": "69"
+  },
+  {
+    "surah": "Ar-Rum",
+    "number": 30,
+    "ayat": "60"
+  },
+  {
+    "surah": "Luqman",
+    "number": 31,
+    "ayat": "34"
+  },
+  {
+    "surah": "As-Sajda",
+    "number": 32,
+    "ayat": "30"
+  },
+  {
+    "surah": "Al-Ahzaab",
+    "number": 33,
+    "ayat": "73"
+  },
+  {
+    "surah": "Saba",
+    "number": 34,
+    "ayat": "54"
+  },
+  {
+    "surah": "Faatir",
+    "number": 35,
+    "ayat": "45"
+  },
+  {
+    "surah": "Yaseen",
+    "number": 36,
+    "ayat": "83"
+  },
+  {
+    "surah": "As-Saaffaat",
+    "number": 37,
+    "ayat": "182"
+  },
+  {
+    "surah": "Saad",
+    "number": 38,
+    "ayat": "88"
+  },
+  {
+    "surah": "Az-Zumar",
+    "number": 39,
+    "ayat": "75"
+  },
+  {
+    "surah": "Ghafir",
+    "number": 40,
+    "ayat": "85"
+  },
+  {
+    "surah": "Fussilat",
+    "number": 41,
+    "ayat": "54"
+  },
+  {
+    "surah": "Ash-Shura",
+    "number": 42,
+    "ayat": "53"
+  },
+  {
+    "surah": "Az-Zukhruf",
+    "number": 43,
+    "ayat": "89"
+  },
+  {
+    "surah": "Ad-Dukhaan",
+    "number": 44,
+    "ayat": "59"
+  },
+  {
+    "surah": "Al-Jaathiya",
+    "number": 45,
+    "ayat": "37"
+  },
+  {
+    "surah": "Al-Ahqaf",
+    "number": 46,
+    "ayat": "35"
+  },
+  {
+    "surah": "Muhammad",
+    "number": 47,
+    "ayat": "38"
+  },
+  {
+    "surah": "Al-Fath",
+    "number": 48,
+    "ayat": "29"
+  },
+  {
+    "surah": "Al-Hujuraat",
+    "number": 49,
+    "ayat": "18"
+  },
+  {
+    "surah": "Qaaf",
+    "number": 50,
+    "ayat": "45"
+  },
+  {
+    "surah": "Adh-Dhaariyat",
+    "number": 51,
+    "ayat": "60"
+  },
+  {
+    "surah": "At-Tur",
+    "number": 52,
+    "ayat": "49"
+  },
+  {
+    "surah": "An-Najm",
+    "number": 53,
+    "ayat": "62"
+  },
+  {
+    "surah": "Al-Qamar",
+    "number": 54,
+    "ayat": "55"
+  },
+  {
+    "surah": "Ar-Rahmaan",
+    "number": 55,
+    "ayat": "78"
+  },
+  {
+    "surah": "Al-Waaqiah",
+    "number": 56,
+    "ayat": "96"
+  },
+  {
+    "surah": "Al-Hadid",
+    "number": 57,
+    "ayat": "29"
+  },
+  {
+    "surah": "Al-Mujaadilah",
+    "number": 58,
+    "ayat": "22"
+  },
+  {
+    "surah": "Al-Hashr",
+    "number": 59,
+    "ayat": "24"
+  },
+  {
+    "surah": "Al-Mumtahana",
+    "number": 60,
+    "ayat": "13"
+  },
+  {
+    "surah": "As-Saff",
+    "number": 61,
+    "ayat": "14"
+  },
+  {
+    "surah": "Al-Jumu'ah",
+    "number": 62,
+    "ayat": "11"
+  },
+  {
+    "surah": "Al-Munaafiqun",
+    "number": 63,
+    "ayat": "11"
+  },
+  {
+    "surah": "At-Taghaabun",
+    "number": 64,
+    "ayat": "18"
+  },
+  {
+    "surah": "At-Talaaq",
+    "number": 65,
+    "ayat": "12"
+  },
+  {
+    "surah": "At-Tahrim",
+    "number": 66,
+    "ayat": "12"
+  },
+  {
+    "surah": "Al-Mulk",
+    "number": 67,
+    "ayat": "30"
+  },
+  {
+    "surah": "Al-Qalam",
+    "number": 68,
+    "ayat": "52"
+  },
+  {
+    "surah": "Al-Haaqqa",
+    "number": 69,
+    "ayat": "52"
+  },
+  {
+    "surah": "Al-Ma'aarij",
+    "number": 70,
+    "ayat": "44"
+  },
+  {
+    "surah": "Nuh",
+    "number": 71,
+    "ayat": "28"
+  },
+  {
+    "surah": "Al-Jinn",
+    "number": 72,
+    "ayat": "28"
+  },
+  {
+    "surah": "Al-Muzzammil",
+    "number": 73,
+    "ayat": "20"
+  },
+  {
+    "surah": "Al-Muddassir",
+    "number": 74,
+    "ayat": "56"
+  },
+  {
+    "surah": "Al-Qiyaama",
+    "number": 75,
+    "ayat": "40"
+  },
+  {
+    "surah": "Al-Insaan",
+    "number": 76,
+    "ayat": "31"
+  },
+  {
+    "surah": "Al-Mursalaat",
+    "number": 77,
+    "ayat": "50"
+  },
+  {
+    "surah": "An-Naba",
+    "number": 78,
+    "ayat": "40"
+  },
+  {
+    "surah": "An-Naazi'aat",
+    "number": 79,
+    "ayat": "46"
+  },
+  {
+    "surah": "Abasa",
+    "number": 80,
+    "ayat": "42"
+  },
+  {
+    "surah": "At-Takwir",
+    "number": 81,
+    "ayat": "29"
+  },
+  {
+    "surah": "Al-Infitaar",
+    "number": 82,
+    "ayat": "19"
+  },
+  {
+    "surah": "Al-Mutaffifin",
+    "number": 83,
+    "ayat": "36"
+  },
+  {
+    "surah": "Al-Inshiqaaq",
+    "number": 84,
+    "ayat": "25"
+  },
+  {
+    "surah": "Al-Buruj",
+    "number": 85,
+    "ayat": "22"
+  },
+  {
+    "surah": "At-Taariq",
+    "number": 86,
+    "ayat": "17"
+  },
+  {
+    "surah": "Al-A'laa",
+    "number": 87,
+    "ayat": "19"
+  },
+  {
+    "surah": "Al-Ghaashiya",
+    "number": 88,
+    "ayat": "26"
+  },
+  {
+    "surah": "Al-Fajr",
+    "number": 89,
+    "ayat": "30"
+  },
+  {
+    "surah": "Al-Balad",
+    "number": 90,
+    "ayat": "20"
+  },
+  {
+    "surah": "Ash-Shams",
+    "number": 91,
+    "ayat": "15"
+  },
+  {
+    "surah": "Al-Lail",
+    "number": 92,
+    "ayat": "21"
+  },
+  {
+    "surah": "Ad-Dhuhaa",
+    "number": 93,
+    "ayat": "11"
+  },
+  {
+    "surah": "Ash-Sharh",
+    "number": 94,
+    "ayat": "8"
+  },
+  {
+    "surah": "At-Tin",
+    "number": 95,
+    "ayat": "8"
+  },
+  {
+    "surah": "Al-Alaq",
+    "number": 96,
+    "ayat": "19"
+  },
+  {
+    "surah": "Al-Qadr",
+    "number": 97,
+    "ayat": "5"
+  },
+  {
+    "surah": "Al-Bayyinah",
+    "number": 98,
+    "ayat": "8"
+  },
+  {
+    "surah": "Az-Zalzala",
+    "number": 99,
+    "ayat": "8"
+  },
+  {
+    "surah": "Al-Aadiyaat",
+    "number": 100,
+    "ayat": "11"
+  },
+  {
+    "surah": "Al-Qaari'a",
+    "number": 101,
+    "ayat": "11"
+  },
+  {
+    "surah": "At-Takaasur",
+    "number": 102,
+    "ayat": "8"
+  },
+  {
+    "surah": "Al-Asr",
+    "number": 103,
+    "ayat": "3"
+  },
+  {
+    "surah": "Al-Humaza",
+    "number": 104,
+    "ayat": "9"
+  },
+  {
+    "surah": "Al-Fil",
+    "number": 105,
+    "ayat": "5"
+  },
+  {
+    "surah": "Quraish",
+    "number": 106,
+    "ayat": "4"
+  },
+  {
+    "surah": "Al-Maa'un",
+    "number": 107,
+    "ayat": "7"
+  },
+  {
+    "surah": "Al-Kausar",
+    "number": 108,
+    "ayat": "3"
+  },
+  {
+    "surah": "Al-Kaafirun",
+    "number": 109,
+    "ayat": "6"
+  },
+  {
+    "surah": "An-Nasr",
+    "number": 110,
+    "ayat": "3"
+  },
+  {
+    "surah": "Al-Lahab",
+    "number": 111,
+    "ayat": "5"
+  },
+  {
+    "surah": "Al-Ikhlaas",
+    "number": 112,
+    "ayat": "4"
+  },
+  {
+    "surah": "Al-Falaq",
+    "number": 113,
+    "ayat": "5"
+  },
+  {
+    "surah": "An-Naas",
+    "number": 114,
+    "ayat": "6"
+  }
+]
