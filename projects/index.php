@@ -11,6 +11,29 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Include config file
 require_once "../config.php";
 
+$limit = 10;
+$page = 1;
+// check if pagination is active
+if (isset($_GET['limit'])) {
+  $limit = $_GET['limit'];
+}
+if (isset($_GET['page'])) {
+  $page = $_GET['page'];
+}
+
+// get total field
+$total_field = 0;
+$sql = "SELECT COUNT(*) AS total FROM tadarus_projects";
+if ($result = mysqli_query($link, $sql)) {
+  if (mysqli_num_rows($result) > 0) {
+    $response = mysqli_fetch_assoc($result);
+    $total_field = $response['total'];
+    // Free result set
+    mysqli_free_result($result);
+  }
+} else {
+  echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +84,25 @@ require_once "../config.php";
     display: flex;
     justify-content: space-evenly;
   }
+
+  .total {
+    color: grey;
+    font-size: 16px;
+  }
+
+  #limit {
+    width: 4em;
+  }
+
+  /* center a div */
+  .parent {
+    display: flex;
+    align-items: center;
+  }
+
+  .child {
+    margin: 0 auto;
+  }
   </style>
   <script type="text/javascript">
   $(document).ready(function() {
@@ -89,7 +131,7 @@ require_once "../config.php";
           </div>
           <?php
           // Attempt select query execution
-          $sql = "SELECT * FROM tadarus_projects ORDER BY id DESC";
+          $sql = "SELECT * FROM tadarus_projects ORDER BY id DESC LIMIT " . $limit . " OFFSET " . ($page - 1) * $limit;
           if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) {
               echo "<table class='table table-bordered table-striped'>";
@@ -108,7 +150,7 @@ require_once "../config.php";
               $i = 0;
               while ($row = mysqli_fetch_array($result)) {
                 echo "<tr>";
-                echo "<td>" . $i + 1 . "</td>";
+                echo "<td>" . (($page - 1) * $limit) + $i + 1 . "</td>";
                 echo "<td>" . $row['name'] . "</td>";
                 echo "<td class='" . $row['status'] . "'>" . $row['status'] . "</td>";
                 echo "<td>" . $row['start'] . "</td>";
@@ -135,7 +177,49 @@ require_once "../config.php";
           mysqli_close($link); ?>
         </div>
       </div>
+
+      <!-- pagination -->
+      <div class="row">
+        <div aria-label="Page navigation" class="col-xs-9">
+          <ul class="pagination child">
+            <li class="<?= $page == 1 ? 'disabled' : '' ?>">
+              <a href="<?= BASE_URL . "/projects/index.php?page=" . ($page - 1) . "&limit=" . $limit ?>"
+                aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <?php
+            for ($i = 1; $i <= ceil($total_field / $limit); $i++) {
+              echo "<li><a href='" . BASE_URL . "/projects/index.php?page=" . $i . "&limit=" . $limit . "'>" . $i . "</a></li>";
+            }
+            ?>
+            <li class="<?= $page == ceil($total_field / $limit) ? 'disabled' : '' ?>">
+              <a href="<?= BASE_URL . "/projects/index.php?page=" . ($page + 1) . "&limit=" . $limit ?>"
+                aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-3 row parent">
+          <select class="form-control col-xs-5" id="limit" class="child" onchange="changeLimit()">
+            <option value="10" <?= $limit == 10 ? 'selected' : '' ?>>10</option>
+            <option value="25" <?= $limit == 25 ? 'selected' : '' ?>>25</option>
+            <option value="50" <?= $limit == 50 ? 'selected' : '' ?>>50</option>
+          </select>
+          <span class="total col-xs-7 child">Total: <?= $total_field ?></span>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <script>
+  function changeLimit() {
+    const limitValue = document.getElementById("limit").value;
+    window.location.href = window.location.pathname + "?limit=" + limitValue;
+  }
+  </script>
+  </div>
   </div>
 </body>
 
