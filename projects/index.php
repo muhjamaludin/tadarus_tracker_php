@@ -11,14 +11,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 // Include config file
 require_once "../config.php";
 
-// list of surah and ayat from json
-$surah_string = file_get_contents("quranlist.json");
-$data_surah_ayat = json_decode($surah_string, true);
-$surahs = [];
-foreach ($data_surah_ayat as $k => $v) {
-  $surahs[$v['number']] = $v['surah'];
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +36,27 @@ foreach ($data_surah_ayat as $k => $v) {
     margin-right: 15px;
   }
 
+  /* color status */
+  .todo {
+    background-color: #0d6efd;
+  }
+
+  .khatam {
+    background-color: #20c997;
+  }
+
+  .on.going {
+    background-color: #ffc107;
+  }
+
+  .overdue {
+    background-color: #dc3545;
+  }
+
+  .overdue.khatam {
+    background-color: #d63384;
+  }
+
   .pengaturan {
     display: flex;
     justify-content: space-evenly;
@@ -63,32 +76,31 @@ foreach ($data_surah_ayat as $k => $v) {
         <div class="container">
           <a class="navbar-brand" href="<?= BASE_URL ?>/home.php">Home</a>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<?= BASE_URL ?>/tadarus">Tadarus</a></li>
-            <li><a href="<?= BASE_URL ?>/projects">Projects</a></li>
+            <li><a href="<?= BASE_URL ?>/tadarus">Tadarus</a></li>
+            <li class="active"><a href="<?= BASE_URL ?>/projects">Projects</a></li>
           </ul>
         </div>
       </nav>
       <div class="row">
         <div class="col-ms-12">
           <div class="page-header clearfix">
-            <h2 class="pull-left">Tadarus Alquran</h2>
-            <a href="<?= BASE_URL ?>/tadarus/create.php" class="btn btn-success pull-right">Tambah Baru</a>
+            <h2 class="pull-left">Tadarus Projects</h2>
+            <a href="<?= BASE_URL ?>/projects/create.php" class="btn btn-success pull-right">Tambah Baru</a>
           </div>
           <?php
           // Attempt select query execution
-          $sql = "SELECT * FROM tadaruses ORDER BY date DESC";
+          $sql = "SELECT * FROM tadarus_projects ORDER BY id DESC";
           if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) {
               echo "<table class='table table-bordered table-striped'>";
               echo "<thead>";
               echo "<tr>";
               echo "<th>#</th>";
-              echo "<th>Tanggal</th>";
-              echo "<th>Hijriah</th>";
-              echo "<th>Juz</th>";
-              echo "<th>Surah</th>";
-              echo "<th>Ayat</th>";
-              echo "<th>Jam</th>";
+              echo "<th>Name</th>";
+              echo "<th>Status</th>";
+              echo "<th>Start Date</th>";
+              echo "<th>Target Date</th>";
+              echo "<th>End Date</th>";
               echo "<th>Pengaturan</th>";
               echo "</tr>";
               echo "</thead>";
@@ -97,16 +109,15 @@ foreach ($data_surah_ayat as $k => $v) {
               while ($row = mysqli_fetch_array($result)) {
                 echo "<tr>";
                 echo "<td>" . $i + 1 . "</td>";
-                echo "<td>" . $row['date'] . "</td>";
-                echo "<td>" . $row['hijriah'] . "</td>";
-                echo "<td>" . $row['juz'] . "</td>";
-                echo "<td>" . $surahs[$row['surah']] . "</td>";
-                echo "<td>" . $row['ayat'] . "</td>";
-                echo "<td>" . $row['time'] . "</td>";
+                echo "<td>" . $row['name'] . "</td>";
+                echo "<td class='" . $row['status'] . "'>" . $row['status'] . "</td>";
+                echo "<td>" . $row['start'] . "</td>";
+                echo "<td>" . $row['target'] . "</td>";
+                echo "<td>" . ($row['end'] == "0000-00-00" ? "-" : $row['end']) . "</td>";
                 echo "<td class='pengaturan'>";
-                echo "<a href='" . BASE_URL . "/tadarus/read.php?id=" . $row['id'] . "' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-                echo "<a href='" . BASE_URL . "/tadarus/update.php?id=" . $row['id'] . "' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                echo "<a href='" . BASE_URL . "/tadarus/delete.php?id=" . $row['id']
+                echo "<a href='" . BASE_URL . "/projects/read.php?id=" . $row['id'] . "' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
+                echo "<a href='" . BASE_URL . "/projects/update.php?id=" . $row['id'] . "' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                echo "<a href='" . BASE_URL . "/projects/delete.php?id=" . $row['id']
                   . "' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
                 echo "</td>";
                 echo "</tr>";

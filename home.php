@@ -38,7 +38,7 @@ include("config.php");
         <a class="navbar-brand active" href="<?= BASE_URL ?>/home.php">Home</a>
         <ul class="nav navbar-nav">
           <li><a href="<?= BASE_URL ?>/tadarus">Tadarus</a></li>
-          <!-- <li><a href="">Link</a></li> -->
+          <li><a href="<?= BASE_URL ?>/projects">Projects</a></li>
         </ul>
       </div>
     </nav>
