@@ -19,7 +19,8 @@ $data_surah_ayat = json_decode($surah_string, true);
 if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
 
   // Prepare a select statement
-  $sql = "SELECT * FROM tadaruses WHERE id = ?";
+  $sql = "SELECT t.*, p.name FROM tadaruses t LEFT JOIN tadarus_projects p ON t.project_id=p.id 
+    WHERE t.id = ?";
 
   if ($stmt = mysqli_prepare($link, $sql)) {
     // Bind variables to the prepared statement as parameters
@@ -44,6 +45,7 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
         $date = $row["date"];
         $time = $row["time"];
         $hijri = $row["hijriah"];
+        $project = $row['name'];
       } else {
         // URL doesn't contain valid id parameter. Redirect to error page
         header("location: error.php");
@@ -120,6 +122,10 @@ foreach ($data_surah_ayat as $dsurah) {
           <div class="form-group">
             <label>Time :</label>
             <span class="form-control-static"><?php echo $row["time"]; ?></span>
+          </div>
+          <div class="form-group">
+            <label>Project :</label>
+            <span class="form-control-static"><?php echo $row["name"]; ?></span>
           </div>
           <p><a href="<?= BASE_URL ?>/tadarus/index.php" class="btn btn-primary">Back</a></p>
         </div>

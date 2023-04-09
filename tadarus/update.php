@@ -16,9 +16,24 @@ $surah_string = file_get_contents("quranlist.json");
 $data_surah_ayat = json_decode($surah_string, true);
 array_unshift($data_surah_ayat, array("number" => 0, "surah" => "choose surah", "ayat" => 1));
 
+// get list projects
+$listProjects = [array("id" => "0", "name" => "Choose project")];
+$sql = "SELECT id, name FROM tadarus_projects ORDER BY id DESC";
+if ($result = mysqli_query($link, $sql)) {
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_array($result)) {
+      array_push($listProjects, $row);
+    }
+    // Free result set
+    mysqli_free_result($result);
+  }
+} else {
+  echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
 // Define variables and initialize with empty values
-$juz = $surah = $ayat = $date = $time = $datetime = $hijri = "";
-$juz_err = $surah_err = $ayat_err = $datetime_err = "";
+$juz = $surah = $ayat = $date = $time = $datetime = $hijri = $project_id = "";
+$juz_err = $surah_err = $ayat_err = $datetime_err = $project_err = "";
 
 // Processing form data when form is submitted
 if (isset($_POST["id"]) && !empty($_POST["id"])) {
@@ -81,6 +96,18 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     $hijri = $input_hijri;
   }
 
+  // validate project
+  $input_project = trim($_POST['project']);
+  if (empty($input_project) || $input_project == 0) {
+    $project_err = "Please input project name";
+  } else {
+    foreach ($listProjects as $p) {
+      if ($p['id'] == $input_project) {
+        $project_id = $input_project;
+      }
+    }
+  }
+
   // Check input errors before inserting in database
   if (empty($juz_err) && empty($surah_err) && empty($ayat_err) && empty($datetime_err)) {
     // set update datetime
@@ -88,12 +115,12 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     $dateTimeStamp = date("Y-m-d H:i:s");
 
     // Prepare an update statement
-    $sql = "UPDATE tadaruses SET juz=?, surah=?, ayat=?, date=?, time=?, hijriah=?, 
+    $sql = "UPDATE tadaruses SET juz=?, surah=?, ayat=?, date=?, time=?, hijriah=?, project_id=?, 
                 updatedAt='$dateTimeStamp' WHERE id=?";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
       // Bind variables to the prepared statement as parameters
-      mysqli_stmt_bind_param($stmt, "ssssssi", $param_juz, $param_surah, $param_ayat, $param_date, $param_time, $param_hijri, $param_id);
+      mysqli_stmt_bind_param($stmt, "ssssssii", $param_juz, $param_surah, $param_ayat, $param_date, $param_time, $param_hijri, $param_project_id, $param_id);
 
       // Set parameters
       $param_juz = $juz;
@@ -102,6 +129,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
       $param_date = $date;
       $param_time = $time;
       $param_hijri = $hijri;
+      $param_project_id = $project_id;
       $param_id = $id;
 
       // Attempt to execute the prepared statement
@@ -151,6 +179,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
           $date = $row["date"];
           $time = $row["time"];
           $hijri = $row["hijriah"];
+          $project_id = $row['project_id'];
           $datetime = $date . "T" . $time;
         } else {
           // URL doesn't contain valid id. Redirect to error page
@@ -201,6 +230,15 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
           </div>
           <p>Please edit the input values and submit to update the record.</p>
           <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+            <div class="form-group <?php echo (!empty($project_err)) ? 'has-error' : ''; ?>">
+              <label>Project</label>
+              <select name="project" class="form-control">
+                <?php foreach ($listProjects as $p) {
+                  echo '<option value="' . $p['id'] . '" ' . ($p["id"] == $project_id ? "selected" : "") . '>' . $p['name'] . '</option>';
+                } ?>
+              </select>
+              <span class="help-block"><?php echo $project_err; ?></span>
+            </div>
             <div class="form-group <?php echo (!empty($date_err)) ? 'has-error' : ''; ?>">
               <label>Tanggal & Waktu</label>
               <input type="datetime-local" name="datetime" class="form-control" value="<?php echo $datetime; ?>">

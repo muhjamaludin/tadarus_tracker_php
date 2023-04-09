@@ -76,7 +76,8 @@ foreach ($data_surah_ayat as $k => $v) {
           </div>
           <?php
           // Attempt select query execution
-          $sql = "SELECT * FROM tadaruses ORDER BY date DESC";
+          $sql = "SELECT t.*, p.name FROM tadaruses t LEFT JOIN tadarus_projects p
+            ON t.project_id=p.id ORDER BY t.date DESC";
           if ($result = mysqli_query($link, $sql)) {
             if (mysqli_num_rows($result) > 0) {
               echo "<table class='table table-bordered table-striped'>";
@@ -89,6 +90,7 @@ foreach ($data_surah_ayat as $k => $v) {
               echo "<th>Surah</th>";
               echo "<th>Ayat</th>";
               echo "<th>Jam</th>";
+              echo "<th>Project</th>";
               echo "<th>Pengaturan</th>";
               echo "</tr>";
               echo "</thead>";
@@ -103,6 +105,7 @@ foreach ($data_surah_ayat as $k => $v) {
                 echo "<td>" . $surahs[$row['surah']] . "</td>";
                 echo "<td>" . $row['ayat'] . "</td>";
                 echo "<td>" . $row['time'] . "</td>";
+                echo "<td>" . $row['name'] . "</td>";
                 echo "<td class='pengaturan'>";
                 echo "<a href='" . BASE_URL . "/tadarus/read.php?id=" . $row['id'] . "' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
                 echo "<a href='" . BASE_URL . "/tadarus/update.php?id=" . $row['id'] . "' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
